@@ -55,13 +55,14 @@
 }
 
 .container {
+    padding-top: 2rem;
     display: flex;
     flex-direction: column; /* Vertical stacking */
     background-color: #f5e6cc; /* Warm off-white background */
     border: 2px solid #d2a679; /* Light brown border */
     box-shadow: 0 0 10px rgba(210, 166, 121, 0.5); /* Subtle warm glow */
-    width: 1000px;
-    height: 600px; /* Total height to fit both sections */
+    width: 2000px;
+    height: 790px; /* Total height to fit both sections */
     position: relative;
     overflow: hidden;
     border-radius: 5px;
@@ -78,14 +79,13 @@
 }
 
 #main-image {
-    max-width: 150%;
-    max-height: 300px;
+    max-width: 500%;
+    max-height: 500px;
     border: 1px solid #d2a679;
     filter: sepia(0.4) brightness(1.1) contrast(1.2); /* Warm retro tint */
 }
 
 #description {
-    margin-top: 20px;
     text-align: center;
     font-size: 1rem;
     max-width: 80%;
@@ -95,7 +95,7 @@
 /* Thumbnail slider styles */
 .thumbnail-slider {
     width: 100%; /* Full width of container */
-    height: 150px; /* Fixed height for slider */
+    height: 120px; /* Fixed height for slider */
     overflow-x: scroll; /* Horizontal scroll for thumbnails */
     background-color: #e8d9b8; /* Light warm beige */
     padding: 10px;
