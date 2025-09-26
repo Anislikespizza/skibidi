@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altair Spark</title>
+    <style>
+        body {
+            background-color: #2f1b0c; /* Warm dark brown background */
+            color: #8b4513; /* Dark brown text for vintage feel */
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        nav {
+            width: 100%;
+            background-color: #000000; /* Warm beige for navigation */
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+       nav ul { 
+        display: flex; 
+        font-size: large; 
+        font-family:Arial, Helvetica, sans-serif; 
+        justify-content: space-around; 
+        list-style: none;  margin: 0; 
+        padding: 0; }
+
+        nav a {
+            color: #aa4f0e;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #ff8c00; /* Amber hover effect */
+        }
+
+        .container {
+            margin-top: 40px; /* Space for fixed nav */
+            display: flex;
+            background-color: #f5e6cc; /* Warm off-white background */
+            border: 2px solid #d2a679; /* Light brown border */
+            box-shadow: 0 0 10px rgba(210, 166, 121, 0.5); /* Subtle warm glow */
+            width: 1000px;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        /* Window title bar */
+        .container::before {
+            content: 'Heheheh';
+            position: absolute;
+            top: -5px;
+            left: 0px;
+            background: #d2a679;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 3px 3px 0 0;
+            font-size: 0.9em;
+        }
+
+        /* Close button (decorative) */
+        .container::after {
+            content: 'X';
+            position: absolute;
+            top: -25px;
+            right: 10px;
+            background: #8b4513;
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: 3px;
+            cursor: default;
+        }
+
+        .main-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        #main-image {
+            max-width: 200%;
+            max-height: 440px;
+            border: 1px solid #d2a679;
+            filter: sepia(0.2) brightness(1.1); /* Warm vintage tint */
+        }
+
+        #description {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2em;
+            max-width: 80%;
+            color: #8b4513;
+        }
+
+        .thumbnail-slider {
+            width: 150px;
+            overflow-y: scroll;
+            background-color: #e8d9b8; /* Light warm beige */
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            scrollbar-width: thin;
+            scrollbar-color: #d2a679 #e8d9b8;
+        }
+
+        .thumb {
+            width: 120px;
+            height: auto;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: border 0.3s, transform 0.3s;
+            filter: sepia(0.2) brightness(1.1);
+        }
+
+        .thumb:hover {
+            border: 1px solid #d2a679;
+            transform: scale(1.05);
+        }
+
+        .thumb.selected {
+            border: 1px solid #d2a679;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">FISH</a></li>
+            <li><a href="skibidi.html">SKIBIDI</a></li>
+            <li><a href="seal.html">SEAL</a></li>
+            <li><a href="whale.html">WHALE</a></li>
+            <li><a href="pizza.html">PIZZA</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="main-box">
+            <img id="main-image" src="https://via.placeholder.com/400x300?text=Main+Image" alt="Main Image">
+            <p id="description">Select a thumbnail to view the image and its description here.</p>
+        </div>
+        <div class="thumbnail-slider">
+            <!-- Add your thumbnails here; customize srcs and data-desc -->
+            <img class="thumb" src="./img/pic1 (1).JPG" data-desc="Description for Image 1: A fun memory to cheer you up! 🌟">
+            <img class="thumb" src="./img/pic1 (2).JPG" data-desc="Description for Image 2: Keep going, you're amazing! 💪">
+            <img class="thumb" src="./img/pic1 (3).JPG" data-desc="Description for Image 3: A uplifting view just for you. 😊">
+            <img class="thumb" src="./img/pic1 (4).JPG" data-desc="Description for Image 4: More cheer coming your way! ❤️">
+            <img class="thumb" src="./img/pic1 (5).JPG" data-desc="Description for Image 5: You've got this! 🚀">
+            <!-- Add more as needed -->
+        </div>
+    </div>
+
+    <script>
+        const thumbs = document.querySelectorAll('.thumb');
+        const mainImage = document.getElementById('main-image');
+        const description = document.getElementById('description');
+
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                // Update main image and description
+                mainImage.src = thumb.src.replace('120x90', '400x300'); // Adjust size; for real images, use full src in data-full or similar
+                mainImage.alt = thumb.alt;
+                description.textContent = thumb.dataset.desc;
+
+                // Highlight selected thumb
+                thumbs.forEach(t => t.classList.remove('selected'));
+                thumb.classList.add('selected');
+            });
+        });
+
+        // Select first thumb by default
+        if (thumbs.length > 0) {
+            thumbs[0].click();
+        }
+    </script>
+</body>
+</html>
