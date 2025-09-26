@@ -52,34 +52,7 @@ nav ul {
   margin: 0;
   padding: 0;
 }
-/* Projects & Blog */
-.projects, .blog {
-  padding: 2rem;
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
-.card {
-  background: white;
-  border: 1px solid #ccc;
-  padding: 1rem;
-}
-.card img {
-  max-width: 100%;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 1rem;
-}
-.btn {
-  display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: #eee;
-  border: 1px solid black;
-  text-decoration: none;
-  color: black;
-}
+
 
 /* Sections */
 body {
